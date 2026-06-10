@@ -6,9 +6,7 @@ const app = new Hono();
 
 app.use('*', cors());
 
-app.get('/', async (c) => {
-    return c.text('Tenzo X Auth is Active. Dashboard is loading...', 200);
-});
+/* Root route handled by static assets */
 
 app.get('/api-status', (c) => c.json({ status: 'Online', service: 'TXA Pages API' }));
 

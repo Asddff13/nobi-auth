@@ -4,10 +4,6 @@ import CryptoJS from 'crypto-js';
 
 const app = new Hono();
 
-app.get('/', async (c) => {
-    return c.text('Tenzo X Auth is Active. Dashboard is loading...', 200);
-});
-
 const encrypt = (data, secret) => {
     if (!data) return data;
     const str = typeof data === 'string' ? data : JSON.stringify(data);
@@ -506,6 +502,10 @@ app.post('/delete_license', async (c) => {
         await dbRequest(c.env, `applications/${secret}/${appName}/licenses/${licenseKey}`, 'DELETE');
         return c.json(sendResponse(true, 'LICENSE_DELETED'));
     } catch (error) { return c.json(sendResponse(false, 'Server error'), 500); }
+});
+
+app.get('*', async (c) => {
+    return await c.env.ASSETS.fetch(c.req.raw);
 });
 
 export const onRequest = handle(app);
