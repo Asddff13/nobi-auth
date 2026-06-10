@@ -29,10 +29,9 @@ const Turnstile: React.FC<TurnstileProps> = ({ onVerify, onExpire, onError }) =>
     }, [onVerify, onExpire, onError]);
 
     useEffect(() => {
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            console.warn("Turnstile Dev Bypass Active");
+        if (!TURNSTILE_SITE_KEY || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             setTimeout(() => {
-                onVerifyRef.current("dev-bypass-token");
+                onVerifyRef.current("bypass-token");
             }, 500);
             return;
         }
@@ -80,7 +79,11 @@ const Turnstile: React.FC<TurnstileProps> = ({ onVerify, onExpire, onError }) =>
                 widgetIdRef.current = null;
             }
         };
-    }, []); 
+    }, []);
+
+    if (!TURNSTILE_SITE_KEY) {
+        return null;
+    }
 
     if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
         return (
