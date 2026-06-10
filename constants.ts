@@ -2,13 +2,13 @@
 export const DB_SECRET = import.meta.env.VITE_DB_SECRET || "";
 
 export const FIREBASE_CONFIG = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || "",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "",
+  apiKey: "AIzaSyDhjlhl4j7sjNfM4JMyk9b3YOF92t7HoLk",
+  authDomain: "parent-cadc6.firebaseapp.com",
+  databaseURL: "https://parent-cadc6-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "parent-cadc6",
+  storageBucket: "parent-cadc6.firebasestorage.app",
+  messagingSenderId: "1054406607611",
+  appId: "1:1054406607611:web:ba2e2f459c9c4a32a1665e",
 };
 
 export const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || "";
